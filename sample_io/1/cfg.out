@@ -1,0 +1,88 @@
+# Control Flow Graph
+
+--------wow--------
+
+B0
+{
+}
+Predecessor:start
+Successor:end
+
+--------rec--------
+
+B0
+{
+a<=1
+}
+Predecessor:start 
+Successor:B1 B2 
+
+B1
+{
+return 1
+}
+Predecessor:B0 
+Successor:end 
+
+B2
+{
+i=1
+}
+Predecessor:B0 
+Successor:B3 
+
+B3
+{
+i<a
+}
+Predecessor:B2 B4 
+Successor:B5 B4 
+
+B4
+{
+ret=ret+rec(i)
+i=i+1
+}
+Predecessor:B3 
+Successor:B3 
+
+B5
+{
+return ret
+}
+Predecessor:B3 
+Successor:end 
+
+--------main--------
+
+B0
+{
+wow()
+x=2
+i=0
+}
+Predecessor:start 
+Successor:B1 
+
+B1
+{
+i<10
+}
+Predecessor:B0 B2 
+Successor:B2 B3 
+
+B2
+{
+x=x+i
+i=i+1
+}
+Predecessor:B1 
+Successor:B1 
+
+B3
+{
+rec(a)
+return 0
+}
+Predecessor:B1 
+Successor:end 

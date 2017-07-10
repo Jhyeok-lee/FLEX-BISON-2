@@ -1,0 +1,26 @@
+# The Result of Liveness Analysis
+
+
+--------  wow  --------
+
+	   IN		OUT
+
+
+--------  rec  --------
+
+	   IN		OUT
+B0 : {a, ret}    {a, ret}
+B1 : {}    {}
+B2 : {a, ret}    {a, i, ret}
+B3 : {a, i, ret}    {ret, i, a}
+B4 : {i, a, ret}    {a, i, ret}
+B5 : {ret}    {}
+
+
+--------  main  --------
+
+	   IN		OUT
+B0 : {a}    {i, x, a}
+B1 : {i, x, a}    {i, x, a}
+B2 : {i, x, a}    {i, x, a}
+B3 : {a}    {}

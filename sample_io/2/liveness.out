@@ -1,0 +1,44 @@
+# The Result of Liveness Analysis
+
+
+--------  set_zero_i  --------
+
+	   IN		OUT
+B0 : {}    {i}
+B1 : {i}    {i}
+B2 : {i}    {i}
+B3 : {i}    {}
+
+
+--------  set_zero_f  --------
+
+	   IN		OUT
+B0 : {}    {i}
+B1 : {i}    {i}
+B2 : {i}    {i}
+B3 : {i}    {}
+
+
+--------  main  --------
+
+	   IN		OUT
+B0 : {new_means, num, input, means}    {k, new_means, num, input, means}
+B1 : {k, new_means, num, input, means}    {new_means, num, input, means, k}
+B2 : {new_means, num, input, means, k}    {i, new_means, input, num, means, k}
+B3 : {i, new_means, input, num, means, k}    {i, new_means, input, num, means, k}
+B4 : {i, num, new_means, input, means, k}    {i, new_means, input, num, means, k}
+B5 : {input, i, means, new_means, num, k}    {j, input, i, means, idx, new_means, less, num, k}
+B6 : {j, input, i, means, idx, new_means, less, num, k}    {j, input, i, means, idx, new_means, less, num, k}
+B7 : {j, input, i, means, idx, new_means, less, num, k}    {j, input, i, means, idx, new_means, less, num, k}
+B8 : {j, input, i, means, less, idx, new_means, num, k}    {tmp, less, j, input, i, means, idx, new_means, num, k}
+B9 : {tmp, less, j, input, i, means, idx, new_means, num, k}    {tmp, less, j, input, i, means, idx, new_means, num, k}
+B10 : {tmp, less, j, input, i, means, idx, new_means, num, k}    {j, tmp, input, i, means, idx, new_means, less, num, k}
+B11 : {j, tmp, input, i, means, new_means, num, k}    {j, input, i, means, idx, new_means, less, num, k}
+B12 : {i, idx, new_means, input, num, k, means}    {i, idx, num, new_means, k, input, means}
+B13 : {i, new_means, num, k, idx, input, means}    {i, new_means, num, k, idx, input, means}
+B14 : {i, new_means, num, k, idx, input}    {i, new_means, num, k, idx, input, means}
+B15 : {k, new_means, num, idx, input, means}    {k, new_means, num, idx, input, means}
+B16 : {new_means, num}    {i, new_means, num}
+B17 : {i, new_means, num}    {i, new_means, num}
+B18 : {i, new_means, num}    {i, new_means, num}
+B19 : {}    {}

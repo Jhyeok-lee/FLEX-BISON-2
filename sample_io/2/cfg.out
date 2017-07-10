@@ -1,0 +1,217 @@
+# Control Flow Graph
+
+--------set_zero_i--------
+
+B0
+{
+i=0
+}
+Predecessor:start 
+Successor:B1 
+
+B1
+{
+i<4
+}
+Predecessor:B0 B2 
+Successor:B2 B3 
+
+B2
+{
+num[i]=0
+i=i+1
+}
+Predecessor:B1 
+Successor:B1 
+
+B3
+{
+return i
+}
+Predecessor:B1 
+Successor:end 
+
+--------set_zero_f--------
+
+B0
+{
+i=0
+}
+Predecessor:start 
+Successor:B1 
+
+B1
+{
+i<4
+}
+Predecessor:B0 B2 
+Successor:B2 B3 
+
+B2
+{
+num[i]=0.000000
+i=i+1
+}
+Predecessor:B1 
+Successor:B1 
+
+B3
+{
+return i
+}
+Predecessor:B1 
+Successor:end 
+
+--------main--------
+
+B0
+{
+k=0
+}
+Predecessor:start 
+Successor:B1 
+
+B1
+{
+k<10000
+}
+Predecessor:B0 B15 
+Successor:B2 B16 
+
+B2
+{
+set_zero_i(num)
+set_zero_f(new_means)
+i=0
+}
+Predecessor:B1 
+Successor:B3 
+
+B3
+{
+i<500
+}
+Predecessor:B2 B4 
+Successor:B5 B12 
+
+B4
+{
+new_means[idx]=new_means[idx]+input[i]
+num[idx]=num[idx]+1
+i=i+1
+}
+Predecessor:B6
+Successor:B3 
+
+B5
+{
+less=1000.000000
+idx=-1
+j=0
+}
+Predecessor:B3 
+Successor:B6 
+
+B6
+{
+j<4
+}
+Predecessor:B5 B7 
+Successor:B8 B4 
+
+B7
+{
+j=j+1
+}
+Predecessor:B11 B10 
+Successor:B6 
+
+B8
+{
+tmp=input[i]-means[j]
+tmp<0
+}
+Predecessor:B6 
+Successor:B9 B10 
+
+B9
+{
+tmp=tmp*-1.000000
+}
+Predecessor:B8 
+Successor:B10 
+
+B10
+{
+less>tmp
+}
+Predecessor:B9 B8 
+Successor:B11 B7 
+
+B11
+{
+one=1
+less=tmp*one
+idx=j
+}
+Predecessor:B10 
+Successor:B7 
+
+B12
+{
+i=0
+}
+Predecessor:B3 
+Successor:B13 
+
+B13
+{
+i<4
+}
+Predecessor:B12 B14 
+Successor:B14 B15 
+
+B14
+{
+means[i]=new_means[i]/num[i]
+i=i+1
+}
+Predecessor:B13 
+Successor:B13 
+
+B15
+{
+k=k+1
+}
+Predecessor:B13 
+Successor:B1 
+
+B16
+{
+i=0
+}
+Predecessor:B1 
+Successor:B17 
+
+B17
+{
+i<4
+}
+Predecessor:B16 B18 
+Successor:B18 B19 
+
+B18
+{
+cat=1
+means[i]=new_means[i]/num[i]*cat
+i=i+1
+}
+Predecessor:B17 
+Successor:B17 
+
+B19
+{
+return 0
+}
+Predecessor:B17 
+Successor:end 

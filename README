@@ -1,0 +1,18 @@
+### How to compile
+    $ make
+
+### How to use
+    $ ./cfg < "input file"
+    $ ./liveness < "input file"
+
+### How to open result file
+    $ vi CFG.out
+    $ vi Liveness.out
+
+or
+
+    $ cat CFG.out
+    $ cat Liveness.out
+
+### How to clean
+    $make clean
